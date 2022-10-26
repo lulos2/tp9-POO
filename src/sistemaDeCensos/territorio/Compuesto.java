@@ -1,6 +1,11 @@
 package sistemaDeCensos.territorio;
 
+import sistemaDeCensos.CriteriosDeBusqueda.Criterio;
+import sistemaDeCensos.comparator.CompareToByNombre;
+import sistemaDeCensos.comparator.CompareToCompuesto;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Compuesto extends Territorio{
 
@@ -42,5 +47,16 @@ public class Compuesto extends Territorio{
             ingresos += territorio.getIngresos();
         }
         return ingresos;
+    }
+
+    @Override
+    public ArrayList<Simple> buscarPor(Criterio criterio, Comparator<Simple> comparator) {
+        ArrayList<Simple> result = new ArrayList<>();
+        for (Territorio territorio: this.territorios) {
+            result.addAll(territorio.buscarPor(criterio,comparator));
+            }
+        CompareToCompuesto c = new CompareToByNombre(new CompareToByNombre(new CompareToByNombre(new CompareToByNombre(null))));
+        result.sort(comparator);
+        return result;
     }
 }

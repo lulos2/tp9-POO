@@ -1,5 +1,10 @@
 package sistemaDeCensos.territorio;
 
+import sistemaDeCensos.CriteriosDeBusqueda.Criterio;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
 public abstract class Territorio {
 
     protected String nombre;
@@ -20,5 +25,7 @@ public abstract class Territorio {
     public double getIngresosPerCapita(){
         return (this.getIngresos()/this.getHabitantes());
     }
+
+    public abstract ArrayList<Simple> buscarPor(Criterio criterio, Comparator<Simple> comparator);
 
 }

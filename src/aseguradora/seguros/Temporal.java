@@ -1,8 +1,11 @@
 package aseguradora.seguros;
 
-import java.time.LocalDate;
+import aseguradora.criterios.Criterio;
 
-public class Temporal extends Compuesto {
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class Temporal extends Seguro{
 
     private LocalDate inicio;
     private LocalDate fin;
@@ -15,12 +18,32 @@ public class Temporal extends Compuesto {
     }
 
     @Override
+    public int getPoliza() {
+        return 0;
+    }
+
+    @Override
     public double getMonto() {
         if(LocalDate.now().isAfter(this.fin))
-            return super.getMonto();
+            return this.getMonto();
         else {
             return 0;
         }
+    }
+
+    @Override
+    public ArrayList<Seguro> getSeguros() {
+        return null;
+    }
+
+    @Override
+    public int getDni() {
+        return 0;
+    }
+
+    @Override
+    public ArrayList<Seguro> buscarPor(Criterio criterio) {
+        return null;
     }
 
 }

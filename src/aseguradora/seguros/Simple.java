@@ -13,11 +13,12 @@ public class Simple extends Seguro {
 
     private String descripcion;
     private double monto;
+    private Calculador calculador;
 
     public Simple(int nPoliza, double monto, int dni, String descripcion){
+        super(dni);
         this.nPoliza = nPoliza;
         this.monto = monto;
-        this.dni = dni;
         this.descripcion = descripcion;
         this.calculador = new MontoFijo(300);
     }
@@ -51,6 +52,8 @@ public class Simple extends Seguro {
         return result;
     }
     public ArrayList<Seguro> getSeguros(){
-        return null;
+        ArrayList<Seguro> result = new ArrayList<>();
+        result.add(this);
+        return result;
     }
 }

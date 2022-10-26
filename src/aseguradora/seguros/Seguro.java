@@ -10,6 +10,10 @@ public abstract class Seguro {
     protected Calculador calculador;
     protected int dni;
 
+    public Seguro(int dni){
+        this.dni = dni;
+    }
+
 
     public abstract int getPoliza();
     public abstract double getMonto();

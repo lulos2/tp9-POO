@@ -12,7 +12,7 @@ public class Compuesto extends Seguro {
     private ArrayList<Seguro> seguros;
 
     public Compuesto(int dni){
-        this.dni = dni;
+        super(dni);
         seguros = new ArrayList<Seguro>();
         calculador = new PorcentajeValorAsegurado(10);
     }

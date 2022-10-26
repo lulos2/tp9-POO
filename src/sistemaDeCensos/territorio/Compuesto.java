@@ -43,22 +43,4 @@ public class Compuesto extends Territorio{
         }
         return ingresos;
     }
-
-    @Override
-    public double getDensidad() {
-        double densidad = 0;
-        for (Territorio territorio: this.territorios) {
-            densidad += territorio.getDensidad();
-        }
-        return densidad;
-    }
-
-    @Override
-    public double getIngresosPerCapita() {
-        double ingresosPerCapita = 0;
-        for (Territorio territorio: this.territorios) {
-            ingresosPerCapita += territorio.getIngresosPerCapita();
-        }
-        return ingresosPerCapita;
-    }
 }

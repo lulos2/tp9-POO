@@ -14,5 +14,3 @@ public class CriterioMinHabitante extends Criterio{
         return (territorio.getHabitantes() > this.habitantesMin);
     }
 }
-/*
-    Todas las comarcas con más de 100.000 habitantes*/

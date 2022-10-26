@@ -13,8 +13,12 @@ public abstract class Territorio {
 
     public abstract double getIngresos();
 
-    public abstract double getDensidad();
+    public double getDensidad(){
+        return (this.getHabitantes()/this.getSuperficie());
+    }
 
-    public abstract double getIngresosPerCapita();
+    public double getIngresosPerCapita(){
+        return (this.getIngresos()/this.getHabitantes());
+    }
 
 }

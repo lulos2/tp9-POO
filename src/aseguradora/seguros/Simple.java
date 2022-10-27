@@ -3,9 +3,9 @@ package aseguradora.seguros;
 import aseguradora.calculador.Calculador;
 import aseguradora.calculador.MontoFijo;
 import aseguradora.criterios.Criterio;
-import aseguradora.seguros.Seguro;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Simple extends Seguro {
 
@@ -44,8 +44,8 @@ public class Simple extends Seguro {
     }
 
     @Override
-    public ArrayList<Seguro> buscarPor(Criterio criterio) {
-        ArrayList<Seguro> result = new ArrayList<>();
+    public ArrayList<Simple> buscarPor(Criterio criterio, Comparator<Simple> comparator) {
+        ArrayList<Simple> result = new ArrayList<>();
         if(criterio.cumple(this)){
             result.add(this);
         }

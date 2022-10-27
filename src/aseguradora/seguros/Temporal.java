@@ -4,17 +4,20 @@ import aseguradora.criterios.Criterio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Temporal extends Seguro{
 
+    private Seguro tipo;
     private LocalDate inicio;
     private LocalDate fin;
 
 
-    public Temporal(int dni, LocalDate fin) {
+    public Temporal(int dni, LocalDate fin, Seguro tipo) {
         super(dni);
         this.inicio = LocalDate.now();
         this.fin = fin;
+        this.tipo = tipo;
     }
 
     @Override
@@ -41,9 +44,13 @@ public class Temporal extends Seguro{
         return 0;
     }
 
-    @Override
-    public ArrayList<Seguro> buscarPor(Criterio criterio) {
-        return null;
-    }
 
+    @Override
+    public ArrayList<Simple> buscarPor(Criterio criterio, Comparator<Simple> comparator) {
+        ArrayList<Simple> result = new ArrayList<Simple>();
+        if (this.fin.isAfter(LocalDate.now())){
+            result = tipo.buscarPor(criterio, comparator);
+        }
+        return result;
+    }
 }

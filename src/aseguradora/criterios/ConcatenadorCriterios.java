@@ -1,9 +1,6 @@
 package aseguradora.criterios;
 
-import aseguradora.seguros.Seguro;
 import aseguradora.seguros.Simple;
-
-import java.util.ArrayList;
 
 public class ConcatenadorCriterios extends Criterio{
 

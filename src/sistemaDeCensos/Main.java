@@ -1,7 +1,5 @@
 package sistemaDeCensos;
 
-import aseguradora.seguros.Compuesto;
-import aseguradora.seguros.Seguro;
 import aseguradora.seguros.Simple;
 
 public class Main {

@@ -5,6 +5,7 @@ import aseguradora.calculador.PorcentajeValorAsegurado;
 import aseguradora.criterios.Criterio;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Compuesto extends Seguro {
 
@@ -54,11 +55,12 @@ public class Compuesto extends Seguro {
     }
 
     @Override
-    public ArrayList<Seguro> buscarPor(Criterio criterio) {
-        ArrayList<Seguro> result = new ArrayList<>();
+    public ArrayList<Simple> buscarPor(Criterio criterio, Comparator<Simple>comparator) {
+        ArrayList<Simple> result = new ArrayList<>();
         for (Seguro seguro: this.getSeguros()) {
-                result.addAll(seguro.buscarPor(criterio));
+                result.addAll(seguro.buscarPor(criterio,comparator));
             }
+        result.sort(comparator);
         return result;
     }
 }

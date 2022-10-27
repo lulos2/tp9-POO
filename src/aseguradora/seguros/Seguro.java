@@ -4,6 +4,7 @@ import aseguradora.calculador.Calculador;
 import aseguradora.criterios.Criterio;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public abstract class Seguro {
 
@@ -19,6 +20,6 @@ public abstract class Seguro {
     public abstract double getMonto();
     public abstract ArrayList<Seguro> getSeguros();
     public abstract int getDni();
-    public abstract ArrayList<Seguro> buscarPor(Criterio criterio);
+    public abstract ArrayList<Simple> buscarPor(Criterio criterio, Comparator<Simple> comparator);
 
 }

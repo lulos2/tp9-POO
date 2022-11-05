@@ -1,5 +1,7 @@
 package parcialPortalNoticias.noticias;
 
+import parcialPortalNoticias.criterio.Criterio;
+
 import java.util.ArrayList;
 
 public class NoticiaCompuesta extends ElementoPortal{
@@ -47,6 +49,15 @@ public class NoticiaCompuesta extends ElementoPortal{
                     result.add(palabras);
                 }
             }
+        }
+        return result;
+    }
+
+    @Override
+    public ArrayList<Noticia> searchFor(Criterio c) {
+        ArrayList<Noticia> result = new ArrayList<Noticia>();
+        for (ElementoPortal elemento: this.noticias){
+            result.addAll(elemento.searchFor(c));
         }
         return result;
     }

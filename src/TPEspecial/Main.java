@@ -9,7 +9,7 @@ public class Main {
         l1.insertFinal(2);
         l1.insertFinal(4);
         l1.insertFinal(6);
-        l1.deleteNode(3);
+        l1.deleteNode(1);
         l1.print();
     }
 }

@@ -1,6 +1,6 @@
 package TPEspecial;
 
-import com.sun.source.doctree.SystemPropertyTree;
+
 
 public class List {
     protected Node start;
@@ -40,6 +40,7 @@ public class List {
                     Node aux = this.start;
                     while (aux.getNext() != null && cont < pos - 1) {
                         aux = aux.getNext();
+                        cont++;
                 }
 
                     Node delete = aux.getNext();

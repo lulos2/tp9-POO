@@ -16,7 +16,7 @@ public class List {
         }
         else {
             Node aux = this.start;
-            while(aux.getNext()!=null) {
+            while(aux.getNext() != null) {
                 aux = aux.getNext();
             }
             aux.setNext(new Node(value,null));
@@ -34,17 +34,11 @@ public class List {
     }
 
 
-    private void casoEspecial(){
-        Node delete=this.start;
-        this.start = this.start.getNext();
-        delete = null;
-
-    }
     public void deleteNode(int pos) {
         int cont = 1;
         try {
             if(pos == 1){
-               this.casoEspecial();
+                this.start = this.start.getNext();
             }
             else {
                 Node aux = this.start;
@@ -55,15 +49,13 @@ public class List {
                 Node delete = aux.getNext();
                 if (delete.getNext() != null) {
                     aux.setNext(delete.getNext());
-                    delete = null;
                 }
                 else {
                     aux.setNext(null);
-                    delete=null;
                 }
             }
         }
-        catch (Exception e){
+        catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -92,13 +84,13 @@ public class List {
     public int getFirstPosFrom(Object element) {
         int actualPosition = 1;
         Node aux = this.start;
+
         while (aux != null) {
             if(aux.getValue().equals(element)) {
                 return actualPosition;
             }
             aux = aux.getNext();
             actualPosition++;
-
         }
         return -1;
     }
@@ -107,9 +99,9 @@ public class List {
         Node aux = this.start;
 
         while (aux != null){
-            Node aux2= this.start;
-            while ((aux2.getNext() !=null)) {
-                if((c.compare(aux2.getValue(),aux2.getNext().getValue()))>0){
+            Node aux2 = this.start;
+            while ((aux2.getNext() != null)) {
+                if((c.compare(aux2.getValue(), aux2.getNext().getValue())) > 0){
                     Object value = aux2.getValue();
                     aux2.setValue(aux2.getNext().getValue());
                     aux2.getNext().setValue(value);

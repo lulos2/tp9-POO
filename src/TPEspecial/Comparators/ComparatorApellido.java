@@ -16,7 +16,7 @@ public class ComparatorApellido implements Comparator<Alumno> {
     @Override
     public int compare(Alumno a1, Alumno a2) {
         if(a1.getApellido().compareTo(a2.getApellido()) == 0)
-            return next.compare(a1.getApellido(),a2.getApellido());
+            return next.compare(a1, a2);
         else
             return a1.getApellido().compareTo(a2.getApellido());
     }

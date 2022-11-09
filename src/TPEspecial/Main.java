@@ -103,14 +103,16 @@ public class Main {
         olimpiadasMatematicas.addEntidad(losFibo);
         olimpiadasMatematicas.addEntidad(matea2);
 
-        entidadesUniversitarias.insertFinal(unicen);
         entidadesUniversitarias.insertFinal(olimpiadasMatematicas);
+        entidadesUniversitarias.insertFinal(unicen);
 
         entidadesUniversitarias.print();
 
         entidadesUniversitarias.orderBy(new ComparatorByCant());
 
         entidadesUniversitarias.print();
+
+        System.out.println("almunos en unicen: " + unicen.getCant() +"  "+"alumnos en olimpiadas matematicas: " + olimpiadasMatematicas.getCant());
 
 
 

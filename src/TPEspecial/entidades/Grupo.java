@@ -24,4 +24,8 @@ public class Grupo extends EntidadUniversitaria{
         }
         return result;
     }
+
+    public String toString() {
+        return this.entidades.toString();
+    }
 }

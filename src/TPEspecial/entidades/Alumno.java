@@ -1,8 +1,9 @@
-package TPEspecial;
+package TPEspecial.entidades;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Alumno {
+public class Alumno extends EntidadUniversitaria{
     private String nombre;
     private String apellido;
     private int dni;
@@ -49,8 +50,8 @@ public class Alumno {
         this.edad = edad;
     }
 
-    public void addInteres(String interes) {
-        this.interes.add(interes);
+    public void addInteres(String... interes) {
+        this.interes.addAll(List.of(interes));
     }
 
     public ArrayList<String> getInteres() {
@@ -64,5 +65,10 @@ public class Alumno {
 
     public String toString(){
         return "Nombre " + this.getNombre() + " Apellido " + this.getApellido() + " Dni " + this.getDni() + " Edad " + this.getEdad() + " Intereses " + this.getInteres();
+    }
+
+    @Override
+    public int getCant() {
+        return 1;
     }
 }

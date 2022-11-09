@@ -1,6 +1,6 @@
-package TPEspecial.Comparators;
+package TPEspecial.comparators;
 
-import TPEspecial.Alumno;
+import TPEspecial.entidades.Alumno;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package TPEspecial.Comparators;
+package TPEspecial.comparators;
 
 import java.util.Comparator;
 

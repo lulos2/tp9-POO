@@ -10,9 +10,9 @@ import java.util.Comparator;
 public class Main {
     public static void main(String[] args) {
 
-        List listaNumeros = new List();
-        List listString = new List();
-        List entidadesUniversitarias = new List();
+        List<Integer> listaNumeros = new<Integer>List();
+        List<String> listString = new List<String>();
+        List<EntidadUniversitaria> entidadesUniversitarias = new<EntidadUniversitaria>List();
 
         listaNumeros.insertFinal(10);
         listaNumeros.insertFinal(21);
@@ -106,11 +106,16 @@ public class Main {
         entidadesUniversitarias.insertFinal(olimpiadasMatematicas);
         entidadesUniversitarias.insertFinal(unicen);
 
+        System.out.println("Lista de Entidades Universitarias sin orden");
+
         entidadesUniversitarias.print();
 
         entidadesUniversitarias.orderBy(new ComparatorByCant());
 
+        System.out.println("Lista de Entidades Universitarias con orden");
+
         entidadesUniversitarias.print();
+
 
         System.out.println("almunos en unicen: " + unicen.getCant() +"  "+"alumnos en olimpiadas matematicas: " + olimpiadasMatematicas.getCant());
 

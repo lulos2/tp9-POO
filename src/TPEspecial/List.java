@@ -3,23 +3,23 @@ package TPEspecial;
 
 import java.util.Comparator;
 
-public class List {
-    protected Node start;
+public class List<T> {
+    protected Node<T> start;
 
     public List() {
         this.start = null;
     }
 
-    public void insertFinal(Object value) {
+    public void insertFinal(T value) {
         if(this.start == null) {
-            this.start = new Node(value, null);
+            this.start = new Node<T>(value, null);
         }
         else {
             Node aux = this.start;
             while(aux.getNext() != null) {
                 aux = aux.getNext();
             }
-            aux.setNext(new Node(value,null));
+            aux.setNext(new Node<T>(value,null));
         }
     }
 
@@ -68,7 +68,7 @@ public class List {
         }
     }
 
-    public void deleteNodeFor(Object element) {
+    public void deleteNodeFor(T element) {
         int actualPosition = 1;
         Node aux = this.start;
         while (aux != null) {
@@ -81,7 +81,7 @@ public class List {
         }
     }
 
-    public int getFirstPosFrom(Object element) {
+    public int getFirstPosFrom(T element) {
         int actualPosition = 1;
         Node aux = this.start;
 
@@ -95,14 +95,14 @@ public class List {
         return -1;
     }
 
-    public void orderBy(Comparator c) {
-        Node aux = this.start;
+    public void orderBy(Comparator<T> c) {
+        Node<T> aux = this.start;
 
         while (aux != null){
-            Node aux2 = this.start;
+            Node<T> aux2 = this.start;
             while ((aux2.getNext() != null)) {
                 if((c.compare(aux2.getValue(), aux2.getNext().getValue())) > 0){
-                    Object value = aux2.getValue();
+                    T value = aux2.getValue();
                     aux2.setValue(aux2.getNext().getValue());
                     aux2.getNext().setValue(value);
                 }

@@ -6,9 +6,9 @@ import java.util.Comparator;
 
 public class ComparatorName implements Comparator<Alumno> {
 
-    private Comparator next;
+    private Comparator<Alumno> next;
 
-    public ComparatorName(Comparator next) {
+    public ComparatorName(Comparator<Alumno> next) {
         this.next = next;
     }
 

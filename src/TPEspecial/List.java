@@ -1,31 +1,43 @@
 package TPEspecial;
 
 
+import TPEspecial.comparators.ComparatorByCant;
+import TPEspecial.comparators.ComparatorDNI;
+
 import java.util.Comparator;
 
 public class List<T> {
     protected Node<T> start;
 
-    public List() {
+
+    protected Comparator<T> orderCriterion;
+
+    public List(Comparator<T> c) {
         this.start = null;
+        this.orderCriterion =  c;
     }
 
-    public void insertFinal(T value) {
+    public void setOrderCriterion(Comparator<T> orderCriterion) {
+        this.orderCriterion = orderCriterion;
+    }
+
+    public void insert(T value) {
         if(this.start == null) {
-            this.start = new Node<T>(value, null);
+            this.start = new Node<T>(value);
         }
         else {
-            Node aux = this.start;
+            Node<T> aux = this.start;
             while(aux.getNext() != null) {
-                aux = aux.getNext();
+
+                    aux = aux.getNext();
             }
-            aux.setNext(new Node<T>(value,null));
+            aux.setNext(new Node<T>(value));
         }
     }
 
-    public int listSize(){
+    public int listSize() {
         int cont = 0;
-        Node aux = this.start;
+        Node<T> aux = this.start;
         while(aux != null) {
             cont++;
             aux = aux.getNext();
@@ -41,12 +53,12 @@ public class List<T> {
                 this.start = this.start.getNext();
             }
             else {
-                Node aux = this.start;
+                Node<T> aux = this.start;
                 while (aux.getNext() != null && cont < pos - 1) {
                     aux = aux.getNext();
                     cont++;
                 }
-                Node delete = aux.getNext();
+                Node<T> delete = aux.getNext();
                 if (delete.getNext() != null) {
                     aux.setNext(delete.getNext());
                 }
@@ -60,8 +72,8 @@ public class List<T> {
         }
     }
 
-    public void print(){
-        Node aux = this.start;
+    public void print() {
+        Node<T> aux = this.start;
         while(aux != null) {
             System.out.println(aux.getValue());
             aux = aux.getNext();
@@ -70,7 +82,7 @@ public class List<T> {
 
     public void deleteNodeFor(T element) {
         int actualPosition = 1;
-        Node aux = this.start;
+        Node<T> aux = this.start;
         while (aux != null) {
             if(aux.getValue().equals(element)) {
                 deleteNode(actualPosition);
@@ -83,7 +95,7 @@ public class List<T> {
 
     public int getFirstPosFrom(T element) {
         int actualPosition = 1;
-        Node aux = this.start;
+        Node<T> aux = this.start;
 
         while (aux != null) {
             if(aux.getValue().equals(element)) {

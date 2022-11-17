@@ -8,18 +8,20 @@ public class ComparatorName implements Comparator<Alumno> {
 
     private Comparator<Alumno> next;
 
+
+
     public ComparatorName(Comparator<Alumno> next) {
         this.next = next;
     }
 
     @Override
-    public int compare(Alumno o1, Alumno o2) {
-        int result = o1.getNombre().compareTo(o2.getNombre());
+    public int compare(Alumno a1, Alumno a2) {
+        int result = a1.getNombre().compareTo(a2.getNombre());
         if(result != 0){
             return result;
         }
         else {
-            return next.compare(o1, o2);
+            return next.compare(a1, a2);
         }
     }
 }

@@ -1,6 +1,7 @@
 package TPEspecial;
 
-import TPEspecial.comparators.ComparatorByCant;
+
+import TPEspecial.comparators.*;
 import TPEspecial.entidades.Alumno;
 import TPEspecial.entidades.EntidadUniversitaria;
 import TPEspecial.entidades.Grupo;
@@ -9,22 +10,22 @@ import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
+        Comparator condicionPorCantidad = new ComparatorByCant();
 
-        List<Integer> listaNumeros = new<Integer>List();
-        List<String> listString = new List<String>();
-        List<EntidadUniversitaria> entidadesUniversitarias = new<EntidadUniversitaria>List();
 
-        listaNumeros.insertFinal(10);
-        listaNumeros.insertFinal(21);
-        listaNumeros.insertFinal(1);
-        listaNumeros.insertFinal(5);
-        listaNumeros.insertFinal(11);
+        List<Integer> listaNumeros = new<Integer>List(new ComparatorNumeroMayor());
+        List<String> listString = new List<String>(new ComparatorAlfabetico());
+        List<EntidadUniversitaria> entidadesUniversitarias = new<EntidadUniversitaria>List(condicionPorCantidad);
 
-        System.out.println("segunda prueba");
+        listaNumeros.insert(10);
+        listaNumeros.insert(21);
+        listaNumeros.insert(1);
+        listaNumeros.insert(5);
+        listaNumeros.insert(11);
+
+        System.out.println("primera prueba");
 
         listaNumeros.print();
-
-
 
         listaNumeros.deleteNode(1);
         listaNumeros.deleteNodeFor(5);
@@ -34,10 +35,10 @@ public class Main {
 
         listaNumeros.print();
 
-        listString.insertFinal("facil");
-        listString.insertFinal("es");
-        listString.insertFinal("parcial");
-        listString.insertFinal("prog 2");
+        listString.insert("facil");
+        listString.insert("es");
+        listString.insert("parcial");
+        listString.insert("prog 2");
 
         System.out.println("tercera prueba");
 
@@ -103,8 +104,8 @@ public class Main {
         olimpiadasMatematicas.addEntidad(losFibo);
         olimpiadasMatematicas.addEntidad(matea2);
 
-        entidadesUniversitarias.insertFinal(olimpiadasMatematicas);
-        entidadesUniversitarias.insertFinal(unicen);
+        entidadesUniversitarias.insert(olimpiadasMatematicas);
+        entidadesUniversitarias.insert(unicen);
 
         System.out.println("Lista de Entidades Universitarias sin orden");
 

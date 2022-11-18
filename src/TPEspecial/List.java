@@ -8,8 +8,6 @@ import java.util.Comparator;
 
 public class List<T> {
     protected Node<T> start;
-
-
     protected Comparator<T> orderCriterion;
 
     public List(Comparator<T> c) {
@@ -26,12 +24,22 @@ public class List<T> {
             this.start = new Node<T>(value);
         }
         else {
-            Node<T> aux = this.start;
-            while(aux.getNext() != null) {
-
-                    aux = aux.getNext();
+            if(this.orderCriterion.compare(this.start.getValue(), value) > 0){
+                Node first = new Node<>(value);
+                Node second = this.start;
+                this.start = first;
+                this.start.setNext(second);
             }
-            aux.setNext(new Node<T>(value));
+            else{
+                Node<T> aux = this.start;
+                while((aux.getNext() != null)&&(this.orderCriterion.compare(aux.getValue(), value) > 0)) {
+                    aux = aux.getNext();
+                }
+                Node inserted = new Node<>(value);
+                Node displaced = aux.getNext();
+                aux.setNext(inserted);
+                inserted.setNext(displaced);
+            }
         }
     }
 
@@ -109,7 +117,7 @@ public class List<T> {
 
     public void orderBy(Comparator<T> c) {
         Node<T> aux = this.start;
-
+        this.setOrderCriterion(c);
         while (aux != null){
             Node<T> aux2 = this.start;
             while ((aux2.getNext() != null)) {
@@ -123,6 +131,5 @@ public class List<T> {
             aux = aux.getNext();
         }
     }
-
 
 }

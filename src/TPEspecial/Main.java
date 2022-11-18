@@ -22,6 +22,8 @@ public class Main {
         listaNumeros.insert(1);
         listaNumeros.insert(5);
         listaNumeros.insert(11);
+        listaNumeros.insert(88);
+        listaNumeros.insert(3);
 
         System.out.println("primera prueba");
 

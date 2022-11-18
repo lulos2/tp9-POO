@@ -1,9 +1,6 @@
 package TPEspecial;
 
-
-import TPEspecial.comparators.ComparatorByCant;
-import TPEspecial.comparators.ComparatorDNI;
-
+import TPEspecial.comparators.*;
 import java.util.Comparator;
 
 public class List<T> {
@@ -24,23 +21,34 @@ public class List<T> {
             this.start = new Node<T>(value);
         }
         else {
-            if(this.orderCriterion.compare(this.start.getValue(), value) > 0){
-                Node first = new Node<>(value);
-                Node second = this.start;
+            if(this.orderCriterion.compare(this.start.getValue(), value) < 0){
+                Node<T> first = new Node<T>(value);
+                first.setNext(this.start);
                 this.start = first;
-                this.start.setNext(second);
             }
             else{
                 Node<T> aux = this.start;
-                while((aux.getNext() != null)&&(this.orderCriterion.compare(aux.getValue(), value) > 0)) {
+                while((aux.getNext() != null)&&(this.orderCriterion.compare(aux.getNext().getValue(), value) > 0)) {
                     aux = aux.getNext();
                 }
-                Node inserted = new Node<>(value);
-                Node displaced = aux.getNext();
-                aux.setNext(inserted);
-                inserted.setNext(displaced);
+                Node<T> nodeToInsert = new Node<>(value);
+                if (aux.getNext() != null) {
+                    insertBetween(aux, nodeToInsert);
+                }
+                else{
+                    insertOnNull(aux, nodeToInsert);
+                }
             }
         }
+    }
+
+    private void insertBetween(Node<T> actualNode, Node<T> newNode ){
+        newNode.setNext(actualNode.getNext());
+        actualNode.setNext(newNode);
+    }
+
+    private void insertOnNull(Node<T> actualNode, Node<T> newNode){
+        actualNode.setNext(newNode);
     }
 
     public int listSize() {

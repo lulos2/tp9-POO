@@ -12,6 +12,10 @@ public class List<T> {
         this.orderCriterion =  c;
     }
 
+    public Node<T> getStart() {
+        return start;
+    }
+
     public void setOrderCriterion(Comparator<T> orderCriterion) {
         this.orderCriterion = orderCriterion;
     }
@@ -21,14 +25,14 @@ public class List<T> {
             this.start = new Node<T>(value);
         }
         else {
-            if(this.orderCriterion.compare(this.start.getValue(), value) < 0){
+            if(this.orderCriterion.compare( value, this.start.getValue()) < 0){
                 Node<T> first = new Node<T>(value);
                 first.setNext(this.start);
                 this.start = first;
             }
             else{
                 Node<T> aux = this.start;
-                while((aux.getNext() != null)&&(this.orderCriterion.compare(aux.getNext().getValue(), value) > 0)) {
+                while((aux.getNext() != null)&&(this.orderCriterion.compare( value, aux.getNext().getValue()) > 0)) {
                     aux = aux.getNext();
                 }
                 Node<T> nodeToInsert = new Node<>(value);
@@ -89,10 +93,10 @@ public class List<T> {
     }
 
     public void print() {
-        Node<T> aux = this.start;
-        while(aux != null) {
-            System.out.println(aux.getValue());
-            aux = aux.getNext();
+        MyIterator<T> it = new MyIterator<T>(this.start);
+        while (it.hasNext()) {
+            T v = it.next();
+            System.out.println(v);
         }
     }
 

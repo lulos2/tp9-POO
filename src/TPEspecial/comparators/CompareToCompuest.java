@@ -1,7 +1,7 @@
 package TPEspecial.comparators;
 
 import TPEspecial.entidades.EntidadUniversitaria;
-import sistemaDeCensos.territorio.Territorio;
+
 
 import java.util.Comparator;
 

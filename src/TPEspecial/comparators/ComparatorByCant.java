@@ -8,6 +8,6 @@ public class ComparatorByCant implements Comparator<EntidadUniversitaria> {
 
     @Override
     public int compare(EntidadUniversitaria e1, EntidadUniversitaria e2) {
-        return e2.getCant() - e1.getCant();
+        return e1.getCant() - e2.getCant();
     }
 }

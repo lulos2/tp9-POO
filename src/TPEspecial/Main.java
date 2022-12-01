@@ -7,15 +7,18 @@ import TPEspecial.entidades.EntidadUniversitaria;
 import TPEspecial.entidades.Grupo;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class Main {
+
+
     public static void main(String[] args) {
         Comparator condicionPorCantidad = new ComparatorByCant();
 
 
-        List<Integer> listaNumeros = new<Integer>List(new ComparatorNumeroMayor());
+        List<Integer> listaNumeros = new <Integer>List(new ComparatorNumeroMayor());
         List<String> listString = new List<String>(new ComparatorAlfabetico());
-        List<EntidadUniversitaria> entidadesUniversitarias = new<EntidadUniversitaria>List(condicionPorCantidad);
+        List<EntidadUniversitaria> entidadesUniversitarias = new <EntidadUniversitaria>List(condicionPorCantidad);
 
         listaNumeros.insert(10);
         listaNumeros.insert(21);
@@ -25,9 +28,19 @@ public class Main {
         listaNumeros.insert(88);
         listaNumeros.insert(3);
 
-        System.out.println("primera prueba");
+        System.out.println("primer prueba");
 
-        listaNumeros.print();
+
+        MyIterator<Integer> i = new MyIterator<Integer>(listaNumeros.getStart());
+
+        for (MyIterator<Integer> it = i; it.hasNext(); ) {
+            System.out.println(it.next());
+
+
+        }
+
+        // PRINT ES EL METODO QUE IMPRIME LA LISTA CON UN ITERATOR<T>
+
 
         listaNumeros.deleteNode(1);
         listaNumeros.deleteNodeFor(5);
@@ -52,6 +65,8 @@ public class Main {
         listString.orderBy(Comparator.reverseOrder());
 
         listString.print();
+
+
 
         /*-------------------------- estructura 1 ---------------------------------*/
 
@@ -109,11 +124,9 @@ public class Main {
         entidadesUniversitarias.insert(olimpiadasMatematicas);
         entidadesUniversitarias.insert(unicen);
 
-        System.out.println("Lista de Entidades Universitarias sin orden");
 
         entidadesUniversitarias.print();
 
-        entidadesUniversitarias.orderBy(new ComparatorByCant());
 
         System.out.println("Lista de Entidades Universitarias con orden");
 

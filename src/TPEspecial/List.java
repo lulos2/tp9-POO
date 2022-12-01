@@ -1,31 +1,63 @@
 package TPEspecial;
 
-
+import TPEspecial.comparators.*;
 import java.util.Comparator;
 
 public class List<T> {
     protected Node<T> start;
+    protected Comparator<T> orderCriterion;
 
-    public List() {
+    public List(Comparator<T> c) {
         this.start = null;
+        this.orderCriterion =  c;
     }
 
-    public void insertFinal(T value) {
+    public Node<T> getStart() {
+        return start;
+    }
+
+    public void setOrderCriterion(Comparator<T> orderCriterion) {
+        this.orderCriterion = orderCriterion;
+    }
+
+    public void insert(T value) {
         if(this.start == null) {
-            this.start = new Node<T>(value, null);
+            this.start = new Node<T>(value);
         }
         else {
-            Node aux = this.start;
-            while(aux.getNext() != null) {
-                aux = aux.getNext();
+            if(this.orderCriterion.compare( value, this.start.getValue()) < 0){
+                Node<T> first = new Node<T>(value);
+                first.setNext(this.start);
+                this.start = first;
             }
-            aux.setNext(new Node<T>(value,null));
+            else{
+                Node<T> aux = this.start;
+                while((aux.getNext() != null)&&(this.orderCriterion.compare( value, aux.getNext().getValue()) > 0)) {
+                    aux = aux.getNext();
+                }
+                Node<T> nodeToInsert = new Node<>(value);
+                if (aux.getNext() != null) {
+                    insertBetween(aux, nodeToInsert);
+                }
+                else{
+                    insertOnNull(aux, nodeToInsert);
+                }
+            }
         }
     }
 
-    public int listSize(){
+    private void insertBetween(Node<T> actualNode, Node<T> newNode ){
+        newNode.setNext(actualNode.getNext());
+        actualNode.setNext(newNode);
+    }
+
+    private void insertOnNull(Node<T> actualNode, Node<T> newNode){
+        actualNode.setNext(newNode);
+    }
+
+    public int listSize() {
         int cont = 0;
-        Node aux = this.start;
+        Node<T> aux = this.start;
         while(aux != null) {
             cont++;
             aux = aux.getNext();
@@ -41,12 +73,12 @@ public class List<T> {
                 this.start = this.start.getNext();
             }
             else {
-                Node aux = this.start;
+                Node<T> aux = this.start;
                 while (aux.getNext() != null && cont < pos - 1) {
                     aux = aux.getNext();
                     cont++;
                 }
-                Node delete = aux.getNext();
+                Node<T> delete = aux.getNext();
                 if (delete.getNext() != null) {
                     aux.setNext(delete.getNext());
                 }
@@ -60,17 +92,17 @@ public class List<T> {
         }
     }
 
-    public void print(){
-        Node aux = this.start;
-        while(aux != null) {
-            System.out.println(aux.getValue());
-            aux = aux.getNext();
+    public void print() {
+        MyIterator<T> it = new MyIterator<T>(this.start);
+        while (it.hasNext()) {
+            T v = it.next();
+            System.out.println(v);
         }
     }
 
     public void deleteNodeFor(T element) {
         int actualPosition = 1;
-        Node aux = this.start;
+        Node<T> aux = this.start;
         while (aux != null) {
             if(aux.getValue().equals(element)) {
                 deleteNode(actualPosition);
@@ -83,7 +115,7 @@ public class List<T> {
 
     public int getFirstPosFrom(T element) {
         int actualPosition = 1;
-        Node aux = this.start;
+        Node<T> aux = this.start;
 
         while (aux != null) {
             if(aux.getValue().equals(element)) {
@@ -97,7 +129,7 @@ public class List<T> {
 
     public void orderBy(Comparator<T> c) {
         Node<T> aux = this.start;
-
+        this.setOrderCriterion(c);
         while (aux != null){
             Node<T> aux2 = this.start;
             while ((aux2.getNext() != null)) {
@@ -111,6 +143,5 @@ public class List<T> {
             aux = aux.getNext();
         }
     }
-
 
 }

@@ -4,24 +4,17 @@ import TPEspecial.entidades.Alumno;
 
 import java.util.Comparator;
 
-public class ComparatorName implements Comparator<Alumno> {
-
-    private Comparator<Alumno> next;
-
+public class ComparatorName extends ComparadorAlumnos {
 
 
     public ComparatorName(Comparator<Alumno> next) {
-        this.next = next;
+        super(next);
     }
 
     @Override
-    public int compare(Alumno a1, Alumno a2) {
-        int result = a1.getNombre().compareTo(a2.getNombre());
-        if(result != 0){
-            return result;
-        }
-        else {
-            return next.compare(a1, a2);
-        }
+    public int diferencia(Alumno a1, Alumno a2) {
+        return a1.getNombre().compareTo(a2.getNombre());
     }
+
+
 }

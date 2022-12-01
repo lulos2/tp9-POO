@@ -33,10 +33,9 @@ public class Main {
 
         MyIterator<Integer> i = new MyIterator<Integer>(listaNumeros.getStart());
 
+
         for (MyIterator<Integer> it = i; it.hasNext(); ) {
             System.out.println(it.next());
-
-
         }
 
         // PRINT ES EL METODO QUE IMPRIME LA LISTA CON UN ITERATOR<T>
@@ -70,6 +69,7 @@ public class Main {
 
         /*-------------------------- estructura 1 ---------------------------------*/
 
+
         Grupo unicen = new Grupo();
         Grupo exactas = new Grupo();
         Grupo humanas = new Grupo();
@@ -98,6 +98,9 @@ public class Main {
         unicen.addEntidad(exactas);
         unicen.addEntidad(humanas);
         unicen.addEntidad(john);
+
+
+
 
         /*------------------------------estructura 2--------------------------------*/
 
@@ -134,6 +137,7 @@ public class Main {
 
 
         System.out.println("almunos en unicen: " + unicen.getCant() +"  "+"alumnos en olimpiadas matematicas: " + olimpiadasMatematicas.getCant());
+
 
 
 
@@ -215,28 +219,3 @@ ordenadas por cantidad total de alumnos (de mayor a menor)
 
 
 */
-/*Alumno a1= new Alumno("Lulo","Bareiss",41690992,24);
-        Alumno a2= new Alumno("Luke","Quiroga",38178273,28);
-        Alumno a3= new Alumno("Caro","Jacquet",41148747,24);
-        a1.addInteres("Cumbia villera");
-        a1.addInteres("Ejercicio");
-        a2.addInteres("Pelear con vecino");
-        a2.addInteres("Correr");
-        a3.addInteres("Jugar al Assassin Creed");
-        a3.addInteres("Vender Galletita");
-
-        l1.insertFinal(a2);
-        l1.insertFinal(a1);
-        l1.insertFinal(a3);
-
-        System.out.println("Sin orden");
-        l1.print();
-
-        Comparator c2= new ComparatorApellido(new ComparatorName(new ComparatorDNI()));
-        Comparator byCant = new ComparatorByCant();
-
-        System.out.println("Con orden");
-
-        l1.orderBy(c2);
-
-        l1.print();*/

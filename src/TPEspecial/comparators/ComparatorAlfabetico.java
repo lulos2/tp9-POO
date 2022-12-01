@@ -1,9 +1,11 @@
 package TPEspecial.comparators;
 
+import TPEspecial.entidades.Alumno;
+import TPEspecial.entidades.EntidadUniversitaria;
+
 import java.util.Comparator;
 
-public class ComparatorAlfabetico implements Comparator<String> {
-
+public class ComparatorAlfabetico implements Comparator<String>{
 
     @Override
     public int compare(String s1, String s2) {

@@ -4,13 +4,16 @@ import TPEspecial.entidades.Alumno;
 
 import java.util.Comparator;
 
-public class ComparatorDNI implements Comparator<Alumno> {
+public class ComparatorDNI extends ComparadorAlumnos{
 
-    public ComparatorDNI(){
+    public ComparatorDNI(Comparator<Alumno>  next){
+        super(next);
     }
 
     @Override
-    public int compare(Alumno a1, Alumno a2) {
+    public int diferencia(Alumno a1, Alumno a2) {
         return a1.getDni() - a2.getDni();
     }
+
+
 }

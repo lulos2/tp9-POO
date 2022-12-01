@@ -34,9 +34,11 @@ public class Main {
         MyIterator<Integer> i = new MyIterator<Integer>(listaNumeros.getStart());
 
 
-        for (MyIterator<Integer> it = i; it.hasNext(); ) {
-            System.out.println(it.next());
+        for (Integer iy: listaNumeros) {
+            System.out.println(iy);
         }
+
+
 
         // PRINT ES EL METODO QUE IMPRIME LA LISTA CON UN ITERATOR<T>
 

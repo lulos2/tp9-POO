@@ -2,8 +2,9 @@ package TPEspecial;
 
 import TPEspecial.comparators.*;
 import java.util.Comparator;
+import java.util.Iterator;
 
-public class List<T> {
+public class List<T> implements Iterable<T> {
     protected Node<T> start;
     protected Comparator<T> orderCriterion;
 
@@ -144,4 +145,8 @@ public class List<T> {
         }
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator<T>(this.start);
+    }
 }
